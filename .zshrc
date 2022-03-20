@@ -27,13 +27,34 @@ plugins=(
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $ZSH/oh-my-zsh.sh
 
-alias cmd='/mnt/c/Windows/System32/cmd.exe'
-alias wsl='/mnt/c/Windows/System32/wsl.exe'
-alias net='/mnt/c/Windows/System32/net.exe'
-alias re='shutdown.exe /r /t 0'
-alias wsls='wsl --shutdown'
-alias wslr='wsl --unregister'
-alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
+if [[ `/usr/bin/ls -A /mnt ` ]] ; then
+	alias cmd='/mnt/c/Windows/System32/cmd.exe'
+	alias wsl='/mnt/c/Windows/System32/wsl.exe'
+	alias net='/mnt/c/Windows/System32/net.exe'
+	alias re='shutdown.exe /r /t 0'
+	alias wsls='wsl --shutdown'
+	alias wslr='wsl --unregister'
+	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
+	alias python.exe='/mnt/d/py/venv/Scripts/python.exe'
+	if [[ -f /usr/sbin/mysql ]] ; then
+		alias ml='mysql -uroot -pxsy2013X!'
+		alias wml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
+	else
+		alias ml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
+	fi
+	alias pipInstall='python.exe -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
+	if ! echo $PATH | grep -q "/mnt/d/py/venv/Scripts" ; then
+		export PATH=$PATH:/mnt/d/py/venv/Scripts
+	fi
+	# 映射wsl的ip地址到localhost
+	ipaddr=$(ip a | grep 'inet ' | grep 'eth0' | awk '{print $2}' | awk -F/ '{print $1}')
+	sed -i '/localhost/d' /mnt/c/Windows/System32/drivers/etc/hosts
+	echo "$ipaddr localhost" >> /mnt/c/Windows/System32/drivers/etc/hosts
+	if echo $PWD | grep -q 'mnt' ; then
+		cd ~;
+	fi
+fi
+
 alias cls='printf "\033c"'
 alias hc='history -c && cls'
 alias ls='exa -g --icons'
@@ -42,14 +63,7 @@ unalias la
 #alias vim8='/home/test/.local/bin/vim'
 #alias vim=vim8
 alias vi=nvim
-alias python.exe='/mnt/d/py/venv/Scripts/python.exe'
-if [[ -f /usr/sbin/mysql ]] ; then
-  alias ml='mysql -uroot -pxsy2013X!'
-  alias wml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
-else
-  alias ml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
-fi
-alias pipInstall='python.exe -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
+alias ml='mysql -uroot -pxsy2013X!'
 alias pipinstall='python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
 alias ttyd='ttyd zsh'
 alias mwget='mwget -n20'
@@ -72,9 +86,6 @@ export GOPROXY=https://goproxy.io
 #if ! echo $PATH | grep -q $GO_HOME ; then
 #	export PATH=$PATH:$GO_HOME/bin
 #fi
-if ! echo $PATH | grep -q "/mnt/d/py/venv/Scripts" ; then
-	export PATH=$PATH:/mnt/d/py/venv/Scripts
-fi
 #if grep -q "centos" /etc/os-release ; then
 #	if ! echo $PATH | grep -q "wslvenv" ; then
 #		export PATH=$PATH:/mnt/d/py/wslvenv/bin
@@ -127,9 +138,6 @@ export MAVEN_HOME=/opt/maven
 if ! echo $PATH | grep -q $MAVEN_HOME ; then
 	export PATH=$PATH:$MAVEN_HOME/bin
 fi
-if echo $PWD | grep -q 'mnt' ; then
-	cd ~;
-fi
 #if ! ps -x | grep -q /init ; then
 #	s
 #fi
@@ -139,11 +147,6 @@ fi
 if ! echo $PATH | grep -q /root/nltk_data ; then
 	export PATH=$PATH:/root/nltk_data
 fi
-
-# 映射wsl的ip地址到localhost
-ipaddr=$(ip a | grep 'inet ' | grep 'eth0' | awk '{print $2}' | awk -F/ '{print $1}')
-sed -i '/localhost/d' /mnt/c/Windows/System32/drivers/etc/hosts
-echo "$ipaddr localhost" >> /mnt/c/Windows/System32/drivers/etc/hosts
 
 # Setup fzf
 # ---------
