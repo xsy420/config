@@ -23,7 +23,8 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	)
-
+# https://github.com/zsh-users/zsh-autosuggestions
+# https://github.com/zsh-users/zsh-syntax-highlighting
 source $ZSH/oh-my-zsh.sh
 
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
