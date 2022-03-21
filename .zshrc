@@ -31,7 +31,7 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	alias cmd='/mnt/c/Windows/System32/cmd.exe'
 	alias wsl='/mnt/c/Windows/System32/wsl.exe'
 	alias net='/mnt/c/Windows/System32/net.exe'
-	alias re='shutdown.exe /r /t 0'
+	alias reboot='shutdown.exe /r /t 0'
 	alias wsls='wsl --shutdown'
 	alias wslr='wsl --unregister'
 	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
