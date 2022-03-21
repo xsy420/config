@@ -11,6 +11,15 @@ ZSH_THEME="agnoster"
 #	jaischeema
 #	)
 
+# 如果没有安装zsh插件，自动clone
+
+if [[ ! -d ~/.oh-my-zsh/plugins/zsh-autosuggestions ]] ; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+fi
+if [[ ! -d ~/.oh-my-zsh/plugins/zsh-syntax-highlighting ]] ; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+fi
+
 plugins=(
 	alias-finder
 	archlinux
@@ -23,8 +32,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	)
-# https://github.com/zsh-users/zsh-autosuggestions
-# https://github.com/zsh-users/zsh-syntax-highlighting
+
 source $ZSH/oh-my-zsh.sh
 
 if [[ `/usr/bin/ls -A /mnt ` ]] ; then
