@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="rkj-repos"
 #ZSH_THEME="random"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
 #ZSH_THEME="jaischeema"
 #ZSH_THEME="humza"
 #ZSH_THEME_RANDOM_CANDIDATES=(
@@ -10,6 +10,12 @@ ZSH_THEME="agnoster"
 #	#rkj-repos
 #	jaischeema
 #	)
+
+if [[ `/usr/bin/ls -A /mnt ` ]] ; then
+  ZSH_THEME="agnoster"
+else
+  ZSH_THEME="robbyrussell"
+fi
 
 # 如果没有安装zsh插件，自动clone
 
