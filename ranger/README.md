@@ -25,3 +25,6 @@ In Arch Linux, you can start it with this command
 ```shell
 sudo pacman -S ffmpegthumbnailer
 ```
+
+* It will show numbers before files
+
