@@ -15,6 +15,10 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
   ZSH_THEME="agnoster"
 else
   ZSH_THEME="robbyrussell"
+  # 如果Linux安装了xorg-xinit,设置开机自启
+  if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [ -f /usr/bin/startx ]; then
+    exec startx
+  fi
 fi
 
 zstyle ':omz:update' mode auto      # update automatically without asking
