@@ -21,8 +21,6 @@ else
   fi
 fi
 
-zstyle ':omz:update' mode auto      # update automatically without asking
-
 # 如果没有安装zsh插件，自动clone
 
 if [[ ! -d ~/.oh-my-zsh/plugins/zsh-autosuggestions ]] ; then
