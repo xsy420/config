@@ -53,6 +53,7 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	alias wsls='wsl --shutdown'
 	alias wslr='wsl --unregister'
 	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
+  alias gh='/mnt/c/Program Files/GitHub CLI/gh.exe'
 	alias python.exe='/mnt/d/py/venv/Scripts/python.exe'
 	if [[ -f /usr/sbin/mysql ]] ; then
 		alias ml='mysql -uroot -pxsy2013X!'
