@@ -50,6 +50,7 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	alias wsl='/mnt/c/Windows/System32/wsl.exe'
 	alias net='/mnt/c/Windows/System32/net.exe'
 	alias reboot='shutdown.exe /r /t 0'
+  alias winget='/mnt/c/Users/12597/AppData/Local/Microsoft/WindowsApps/winget.exe --rainbow'
 	alias wsls='wsl --shutdown'
 	alias wslr='wsl --unregister'
 	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
