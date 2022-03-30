@@ -91,7 +91,7 @@ alias mwget='mwget -n20'
 alias s=neofetch
 alias ra=ranger
 alias q='omz reload'
-
+alias lg='lazygit'
 if ! echo $LD_LIBRARY_PATH | grep -q "/usr/local/lib64" ; then
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 fi
