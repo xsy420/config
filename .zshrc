@@ -70,6 +70,9 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	ipaddr=$(ip a | grep 'inet ' | grep 'eth0' | awk '{print $2}' | awk -F/ '{print $1}')
 	sed -i '/localhost/d' /mnt/c/Windows/System32/drivers/etc/hosts
 	echo "$ipaddr localhost" >> /mnt/c/Windows/System32/drivers/etc/hosts
+  if ! [[ `grep "githubusercontent" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
+    echo "185.199.108.133 raw.githubusercontent.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
+  fi
 	if echo $PWD | grep -q 'mnt' ; then
 		cd ~;
 	fi
@@ -182,4 +185,13 @@ if [[ -d /root/.fzf ]] ; then
   # Key bindings
   # ------------
   source "/root/.fzf/shell/key-bindings.zsh"
+fi
+
+# auto install xiki ( xsh )
+if ! [[ -f ${HOME}/.xsh ]] ; then
+  curl https://raw.githubusercontent.com/trogdoro/xiki/master/bin/xsh -o xsh
+  chmod +x xsh
+  ./xsh --reload
+  ./xsh -xsh/setup
+  rm -rf xsh
 fi
