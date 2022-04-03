@@ -186,12 +186,3 @@ if [[ -d /root/.fzf ]] ; then
   # ------------
   source "/root/.fzf/shell/key-bindings.zsh"
 fi
-
-# auto install xiki ( xsh )
-if ! [[ -f ${HOME}/.xsh ]] ; then
-  curl https://raw.githubusercontent.com/trogdoro/xiki/master/bin/xsh -o xsh
-  chmod +x xsh
-  ./xsh --reload
-  ./xsh -xsh/setup
-  rm -rf xsh
-fi
