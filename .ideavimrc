@@ -1,7 +1,5 @@
 noremap H ^
 noremap L $
-noremap ,h H
-noremap ,l L
 
 map s <nop>
 map S :w<CR>
@@ -27,26 +25,8 @@ nnoremap tN :tabnew<CR>
 nnoremap tb :tabprevious<CR>
 nnoremap tc :tabclose<CR>
 
-" ===
-" === Buffer Maps
-" ===
-nnoremap <space>bn :bnext<CR>
-nnoremap <space>bp :bprevious<CR>
-
-" ===
-" === Command Mode Cursor Movement
-" ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-
-set tabstop=4
-set shiftwidth=4
 "显示行号
-set nu
+"set nu
 "显示相对行号
 set relativenumber
 "在光标所在行下显示一条线
@@ -55,11 +35,8 @@ set cursorline
 set wrap
 "在右下角显示输入的字符
 set showcmd
-"在COMMAND模式下，支持<TAB>补全
-set wildmenu
 set mouse=a
 set helplang=cn
-set whichwrap+=h,l
 set nobackup
 "搜索
 "忽略大小写
@@ -68,11 +45,6 @@ set hls
 exec "nohls"
 map <leader><CR> :nohls<CR>
 set smartcase
-
-"placeholder in Markdown
-
-map <space><space> <esc>/<++><CR>:nohls<CR>c4l
-
 
 "set backspace=2
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
@@ -86,19 +58,3 @@ au BufRead,BufNewFile *.py,*.c,*.h,*.java match Whitespace /\s\+$\ \+/
 
 "恢复到上次关闭⽂件时光标所在的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-"  _____ _   _ _   _  ____ _____ ___ ___  _   _
-" |  ___| | | | \ | |/ ___|_   _|_ _/ _ \| \ | |
-" | |_  | | | |  \| | |     | |  | | | | |  \| |
-" |  _| | |_| | |\  | |___  | |  | | |_| | |\  |
-" |_|    \___/|_| \_|\____| |_| |___\___/|_| \_|
-
-
-nmap <space>t :call OpenTerm()<CR>
-function! OpenTerm() abort
-	set splitbelow
-	:sp
-	:res -10
-	term
-endfunction
-nmap <leader>t :term<CR>
