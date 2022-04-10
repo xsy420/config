@@ -50,11 +50,11 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	alias wsl='/mnt/c/Windows/System32/wsl.exe'
 	alias net='/mnt/c/Windows/System32/net.exe'
 	alias reboot='shutdown.exe /r /t 0'
-  alias winget='/mnt/c/Users/12597/AppData/Local/Microsoft/WindowsApps/winget.exe'
+  	alias winget='/mnt/c/Users/12597/AppData/Local/Microsoft/WindowsApps/winget.exe'
 	alias wsls='wsl --shutdown'
 	alias wslr='wsl --unregister'
 	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
-  alias gh='/mnt/c/Program\ Files/GitHub\ CLI/gh.exe'
+  	alias gh='/mnt/c/Program\ Files/GitHub\ CLI/gh.exe'
 	alias python.exe='/mnt/d/py/venv/Scripts/python.exe'
 	if [[ -f /usr/sbin/mysql ]] ; then
 		alias ml='mysql -uroot -pxsy2013X!'
@@ -70,15 +70,15 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	ipaddr=$(ip a | grep 'inet ' | grep 'eth0' | awk '{print $2}' | awk -F/ '{print $1}')
 	sed -i '/localhost/d' /mnt/c/Windows/System32/drivers/etc/hosts
 	echo "$ipaddr localhost" >> /mnt/c/Windows/System32/drivers/etc/hosts
-  if ! [[ `grep "githubusercontent" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
-    echo "185.199.108.133 raw.githubusercontent.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
-  fi
+	if ! [[ `grep "githubusercontent" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
+		echo "185.199.108.133 raw.githubusercontent.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
+	fi
 	if echo $PWD | grep -q 'mnt' ; then
 		cd ~;
 	fi
 fi
 
-alias cls='printf "\033c"'
+alias c='printf "\033c"'
 alias hc='history -c && cls'
 alias ls='exa -g --icons'
 unalias la
@@ -105,23 +105,6 @@ if ! echo $PATH | grep -q $JAVA_HOME ; then
 fi
 #export GO_HOME=/usr/local/go
 export GOPROXY=https://goproxy.io
-#if ! echo $PATH | grep -q $GO_HOME ; then
-#	export PATH=$PATH:$GO_HOME/bin
-#fi
-#if grep -q "centos" /etc/os-release ; then
-#	if ! echo $PATH | grep -q "wslvenv" ; then
-#		export PATH=$PATH:/mnt/d/py/wslvenv/bin
-#	fi
-#	#eval $(thefuck --alias fuck)
-#elif grep -q "ubuntu" /etc/os-release ; then
-#	if ! echo $PATH | grep -q "wslubuntuvenv" ; then
-#		export PATH=$PATH:/mnt/d/py/wslubuntuvenv/bin
-#	fi
-#elif grep -q "arch" /etc/os-release ; then
-#	if ! echo $PATH | grep -q "wslvenv" ; then
-#		export PATH=$PATH:/mnt/d/py/wslvenv/bin
-#	fi
-#fi
 export RANGER_LOAD_DEFAULT_RC=FALSE
 #if ! set | grep -q TMUX ; then
 #	tmux
