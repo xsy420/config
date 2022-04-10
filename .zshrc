@@ -86,7 +86,6 @@ unalias la
 #alias vim8='/home/test/.local/bin/vim'
 #alias vim=vim8
 alias vi=nvim
-alias ml='mysql -uroot -pxsy2013X!'
 alias pipinstall='python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
 alias ttyd='ttyd zsh'
 alias mwget='mwget -n20'
