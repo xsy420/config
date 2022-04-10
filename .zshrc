@@ -79,7 +79,7 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 fi
 
 alias c='printf "\033c"'
-alias hc='history -c && cls'
+alias hc='history -c && c'
 alias ls='exa -g --icons'
 unalias la
 #alias ls='ls --color=auto'
