@@ -73,6 +73,9 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	if ! [[ `grep "githubusercontent" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
 		echo "185.199.108.133 raw.githubusercontent.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
 	fi
+	if ! [[ `grep "github.com" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
+		echo "140.82.112.3 github.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
+	fi
 	if echo $PWD | grep -q 'mnt' ; then
 		cd ~;
 	fi
