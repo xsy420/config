@@ -35,9 +35,7 @@ set cursorline
 set wrap
 "在右下角显示输入的字符
 set showcmd
-set mouse=a
 set helplang=cn
-set nobackup
 "搜索
 "忽略大小写
 set ignorecase
@@ -46,15 +44,27 @@ exec "nohls"
 map <leader><CR> :nohls<CR>
 set smartcase
 
-"set backspace=2
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
 
 " 上下保证5行显示
 set scrolloff=5
 
-"设置高亮显示行尾不必要的空格,并适用给文件
-highlight Whitespace ctermbg=red guibg=red
-au BufRead,BufNewFile *.py,*.c,*.h,*.java match Whitespace /\s\+$\ \+/
-
 "恢复到上次关闭⽂件时光标所在的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+"Plug
+
+set NERDTree
+set surround
+set easymotion
+
+"ide ctrl mapping
+
+sethandler <C-C> a:vim
+sethandler <C-A> a:vim
+sethandler <C-D> a:vim
+sethandler <C-X> a:vim
+sethandler <C-V> a:vim
+sethandler <C-O> a:vim
+sethandler <C-I> a:vim
+sethandler <C-R> a:vim
