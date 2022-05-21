@@ -1,0 +1,7 @@
+[user]
+	name = xsy420
+	email = 1259795637@qq.com
+[url "git@git.zhlh6.cn"]
+	insteadOf = https://github.com
+[url "git@git.zhlh6.cn:"]
+	insteadOf = https://github.com/
