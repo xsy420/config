@@ -70,15 +70,6 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	ipaddr=$(ip a | grep 'inet ' | grep 'eth0' | awk '{print $2}' | awk -F/ '{print $1}')
 	sed -i '/localhost/d' /mnt/c/Windows/System32/drivers/etc/hosts
 	echo "$ipaddr localhost" >> /mnt/c/Windows/System32/drivers/etc/hosts
-	if ! [[ `grep "githubusercontent" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
-		echo "185.199.108.133 raw.githubusercontent.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
-	fi
-	if ! [[ `grep "github.com" /mnt/c/Windows/System32/drivers/etc/hosts` ]] ; then
-		echo "140.82.112.3 github.com" >> /mnt/c/Windows/System32/drivers/etc/hosts
-	fi
-	if echo $PWD | grep -q 'mnt' ; then
-		cd ~;
-	fi
 fi
 
 alias c='printf "\033c"'
@@ -118,6 +109,10 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias javadebug='java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y'
+
+if ! echo $PATH | grep -q ~/.local/bin; then
+	export PATH=$PATH:~/.local/bin
+fi
 
 # Big Data
 # Hadoop
