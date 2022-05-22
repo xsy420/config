@@ -114,6 +114,14 @@ if ! echo $PATH | grep -q ~/.local/bin; then
 	export PATH=$PATH:~/.local/bin
 fi
 
+if [ -f /usr/bin/npm ] ; then
+  if [ -f /usr/bin/cnpm ] ; then
+  else
+    echo 'installing cnpm'
+    sudo npm install -g cnpm -registry=https://registry.npm.taobao.org
+  fi
+fi
+
 # Big Data
 # Hadoop
 export HADOOP_HOME=/opt/hadoop
