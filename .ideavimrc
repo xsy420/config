@@ -1,27 +1,13 @@
 noremap H ^
 noremap L $
 
-map s <nop>
 inoremap jk <Esc>
-snoremap jk <Esc>
 
 nnoremap < <<
 nnoremap > >>
 
 map <c-c> :qa<CR>
 
-noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap sj :set splitbelow<CR>:split<CR>
-noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap sl :set splitright<CR>:vsplit<CR>
-
-" ===
-" === Tab Maps
-" ===
-nnoremap tn :tabnext<CR>
-nnoremap tN :tabnew<CR>
-nnoremap tb :tabprevious<CR>
-nnoremap tc :tabclose<CR>
 
 "显示行号
 "set nu
@@ -39,7 +25,6 @@ set helplang=cn
 set ignorecase
 set hls
 exec "nohls"
-map <leader><CR> :nohls<CR>
 set smartcase
 
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
@@ -51,8 +36,7 @@ set scrolloff=5
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "able to copy into clipboard and paste to other web, terminal or anywhere
-set clipboard+=unnamed
-
+set clipboard+=unnamed,unnamedplus
 
 "Plug
 
@@ -65,7 +49,6 @@ set which-key
 set notimeout
 
 "ide ctrl mapping
-
 sethandler <C-C> a:vim
 sethandler <C-A> a:vim
 sethandler <C-D> a:vim
@@ -77,32 +60,24 @@ sethandler <C-R> a:vim
 
 let mapleader = " "
 
-" ================================================================================================
-" = No Leader Keymaps =====================================
-" ================================================================================================
-nmap ge <action>(GotoNextError)
-nmap gt <action>(GotoTest)
-nmap gm <action>(MethodUp)
-" last changed in current buffer(file)
-nmap ga '.
-
 " paste之后不会把yank的内容替换掉
-vmap p "_dp
+vmap p \"_dp
 
 "which-key
 ":actionlist<cr>
 "<ctrl> + <shift> + a
 
 " Base Setting
-let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_ShowVimActions = "false"
 let g:WhichKey_FontFamily = "Jetbrains Mono"
-let g:WhichKey_FontSize = 17
+let g:WhichKey_FontSize = 40
+
 let g:WhichKey_KeyStyle = "bold"
 let g:WhichKey_KeyColor = "red"
 let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_PrefixColor = "blue"
 let g:WhichKey_CommandStyle = "bold"
-let g:WhichKey_CommandColor = "yellow"
+let g:WhichKey_CommandColor = "green"
 
 
 
@@ -127,73 +102,76 @@ nmap <leader>fp <action>(OpenProjectWindows)
 let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fm Format"
 nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
 
-" g: Git ⭐️
-let g:WhichKeyDesc_Git = "<leader>g Git"
-let g:WhichKeyDesc_Git_RollbackHunk = "<leader>gr RollbackHunk"
-nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
-
-" i: Insert ⭐️
-let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
-nmap <leader>i f(a
-
-" j: add Semicolon and goto nextline⭐️
-let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
-nmap <leader>j A;<ESC>o
-
 " l: lsp: Language server protocol (align with neovim)⭐️
 let g:WhichKeyDesc_LSP = "<leader>l LSP"
 let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
 nmap <leader>lr <action>(RenameElement)
 
+" s: Show Or Split ⭐️
+let g:WhichKeyDesc_ShowOrSplit = "<leader>s Show Or Split"
+let g:WhichKeyDesc_ShowOrSplit_VimActions = "<leader>sv ShowVimActions"
 
-" n: No ⭐️
-let g:WhichKeyDesc_No_Highlight = "<leader>nl NoHighlight"
-nmap <leader>nl :nohlsearch<CR>
+nmap <leader>sv <action>(VimActions)
 
+let g:WhichKeyDesc_ShowOrSplit_SplitLeft = "<leader>sh SplitLeft"
+nmap <leader>sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 
-" s: Show ⭐️
-let g:WhichKeyDesc_Show = "<leader>s Show"
-let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
-nmap <leader>ss <action>(FileStructurePopup)
-let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
-nmap <leader>sb <action>(ShowBookmarks)
+let g:WhichKeyDesc_ShowOrSplit_SplitRight = "<leader>sl SplitRight"
+nmap <leader>sl :set splitright<CR>:vsplit<CR>
+
+let g:WhichKeyDesc_ShowOrSplit_SplitUp = "<leader>sk SplitUp"
+nmap <leader>sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+
+let g:WhichKeyDesc_ShowOrSplit_SplitDown = "<leader>sj SplitDown"
+nmap <leader>sj :set splitbelow<CR>:split<CR>
 
 " r: Run/Re ⭐️
 let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
-let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
-nmap <leader>rr <action>(Rerun)
-let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt ReRunTests"
-nmap <leader>rt <action>(RerunTests)
-let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
-map <leader>rn <action>(RenameElement)
 
-" w: Window ⭐️
-let g:WhichKeyDesc_Windows = "<leader>w Windows"
-let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
-nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
-let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc closeActiveWindow"
-nmap <leader>wc <c-w>c
+let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
+nmap <leader>rn <action>(RenameElement)
+
+let g:WhichKeyDesc_RunOrRe_RunCurrent = "<leader>rr RunCurrent"
+nmap <leader>rr <action>(Run)
+
 
 " z: zip(fold) ⭐️
 let g:WhichKeyDesc_Zip = "<leader>z Zip"
-let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo unZipAll"
-nmap <leader>zo <action>(ExpandAllRegions)
-let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc ZipAll"
-nmap <leader>zc <action>(CollapseAllRegions)
+let g:WhichKeyDesc_Zip_unZipAll = "<leader>zc unZipAll"
+nmap <leader>zc <action>(ExpandAllRegions)
+
+let g:WhichKeyDesc_Zip_ZipAll = "<leader>zo ZipAll"
+nmap <leader>zo <action>(CollapseAllRegions)
 
 " c: Close ⭐️;
 let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
 nmap <leader>c :q!<CR>
 
 " e: Toggle Explorer ⭐️
-let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
+let g:WhichKeyDesc_ToggleExplorer = "<leader>e ToggleExplorer"
 nmap <leader>e <action>(ActivateProjectToolWindow)
-" e: Extract
-" extract method/function
-vmap <leader>em <action>(ExtractMethod)
-" extract constant
-vmap <leader>ec <action>(IntroduceConstant)
-" extract field
-vmap <leader>ef <action>(IntroduceField)
-" extract variable
-vmap <leader>ev <action>(IntroduceVariable)
+
+" t: Tab⭐️
+let g:WhichKeyDesc_Tab = "t Tab"
+
+let g:WhichKeyDesc_Tab_Next = "tn Next Tab"
+nnoremap tn :tabnext<CR>
+
+let g:WhichKeyDesc_Tab_Previous = "tb Previous Tab"
+nnoremap tb :tabprevious<CR>
+
+let g:WhichKeyDesc_Goto = "g Goto"
+
+let g:WhichKeyDesc_Goto_GotoNextError = "ge GotoNextError"
+nmap ge <action>(GotoNextError)
+
+let g:WhichKeyDesc_Goto_GotoTest = "gt GotoTest"
+nmap gt <action>(GotoTest)
+
+let g:WhichKeyDesc_Goto_MethodUp = "gm MethodUp"
+nmap gm <action>(MethodUp)
+
+" last changed in current buffer(file)
+let g:WhichKeyDesc_Goto_LastChange = "ga LastChange"
+nmap ga '.
+
