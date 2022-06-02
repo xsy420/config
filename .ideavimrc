@@ -3,6 +3,7 @@ noremap L $
 
 inoremap jk <Esc>
 
+"nnoremap :action LeaderAction
 nnoremap < <<
 nnoremap > >>
 
@@ -32,6 +33,11 @@ set backspace   =indent,eol,start  " Make backspace work as you would expect.
 " 上下保证5行显示
 set scrolloff=5
 
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
 "恢复到上次关闭⽂件时光标所在的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -47,6 +53,8 @@ set easymotion
 set keep-english-in-normal
 set which-key
 set notimeout
+set sneak
+set multiple-cursors
 
 "ide ctrl mapping
 sethandler <C-C> a:vim
@@ -70,7 +78,7 @@ vmap p \"_dp
 " Base Setting
 let g:WhichKey_ShowVimActions = "false"
 let g:WhichKey_FontFamily = "Jetbrains Mono"
-let g:WhichKey_FontSize = 40
+let g:WhichKey_FontSize = 20
 
 let g:WhichKey_KeyStyle = "bold"
 let g:WhichKey_KeyColor = "red"
@@ -101,11 +109,6 @@ nmap <leader>fp <action>(OpenProjectWindows)
 
 let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fm Format"
 nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
-
-" l: lsp: Language server protocol (align with neovim)⭐️
-let g:WhichKeyDesc_LSP = "<leader>l LSP"
-let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
-nmap <leader>lr <action>(RenameElement)
 
 " s: Show Or Split ⭐️
 let g:WhichKeyDesc_ShowOrSplit = "<leader>s Show Or Split"
@@ -149,7 +152,7 @@ nmap <leader>c :q!<CR>
 
 " e: Toggle Explorer ⭐️
 let g:WhichKeyDesc_ToggleExplorer = "<leader>e ToggleExplorer"
-nmap <leader>e <action>(ActivateProjectToolWindow)
+map <leader>e <action>(ActivateProjectToolWindow)
 
 " t: Tab⭐️
 let g:WhichKeyDesc_Tab = "t Tab"
@@ -175,3 +178,12 @@ nmap gm <action>(MethodUp)
 let g:WhichKeyDesc_Goto_LastChange = "ga LastChange"
 nmap ga '.
 
+let g:WhichKeyDesc_EasyMotion = "<leader><leader> EasyMotion Prefix"
+
+"let g:WhichKeyDesc_Material = "<leader>m Material"
+
+let g:WhichKeyDesc_Actions = "<leader>a Actions"
+
+let g:WhichKeyDesc_Actions_New = "<leader>an New"
+
+nmap <leader>an <action>(NewElement)
