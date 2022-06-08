@@ -1,8 +1,6 @@
 noremap H ^
 noremap L $
 
-inoremap jk <Esc>
-
 "nnoremap :action LeaderAction
 nnoremap < <<
 nnoremap > >>
@@ -187,3 +185,15 @@ let g:WhichKeyDesc_Actions = "<leader>a Actions"
 let g:WhichKeyDesc_Actions_New = "<leader>an New"
 
 nmap <leader>an <action>(NewElement)
+
+" Without this setting, it's not friendly to insert `j` only. The `WhichKey` Interface will be stuck, and `Force` you
+" to press the `k` for escaping insert mode. So you have to manually press the `j`, and then `<Esc>`, and `a`.
+" Here comes a mapping.
+" press jj to insert j only
+let g:WhichKeyDesc_J = "j J"
+let g:WhichKeyDesc_J_J = "jj Insert j only"
+inoremap jj j<Esc>a
+
+let g:WhichKeyDesc_J_Escape = "jk Escape Insert Mode"
+
+inoremap jk <Esc>
