@@ -18,7 +18,6 @@ set cursorline
 set wrap
 "在右下角显示输入的字符
 set showcmd
-set helplang=cn
 "搜索
 "忽略大小写
 set ignorecase
@@ -67,7 +66,7 @@ sethandler <C-R> a:vim
 let mapleader = " "
 
 " paste之后不会把yank的内容替换掉
-vmap p \"_dp
+"vmap p \"_dp
 
 "which-key
 ":actionlist<cr>
@@ -134,15 +133,6 @@ nmap <leader>rn <action>(RenameElement)
 
 let g:WhichKeyDesc_RunOrRe_RunCurrent = "<leader>rr RunCurrent"
 nmap <leader>rr <action>(Run)
-
-
-" z: zip(fold) ⭐️
-let g:WhichKeyDesc_Zip = "<leader>z Zip"
-let g:WhichKeyDesc_Zip_unZipAll = "<leader>zc unZipAll"
-nmap <leader>zc <action>(ExpandAllRegions)
-
-let g:WhichKeyDesc_Zip_ZipAll = "<leader>zo ZipAll"
-nmap <leader>zo <action>(CollapseAllRegions)
 
 " c: Close ⭐️;
 let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
