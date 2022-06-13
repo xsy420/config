@@ -56,11 +56,12 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 	alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
   	alias gh='/mnt/c/Program\ Files/GitHub\ CLI/gh.exe'
 	alias python.exe='/mnt/d/py/venv/Scripts/python.exe'
+  password=`cat /mnt/e/mysql-8.0.26-winx64/PASSWORD`
 	if [[ -f /usr/sbin/mysql ]] ; then
-		alias ml='mysql -uroot -pxsy2013X!'
-		alias wml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
+		alias ml='mysql -uroot -p'$password
+		alias wml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -p'$password
 	else
-		alias ml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -pxsy2013X!'
+		alias ml='/mnt/e/mysql-8.0.26-winx64/bin/mysql.exe -uroot -p'$password
 	fi
 	alias pipInstall='python.exe -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple'
 	if ! echo $PATH | grep -q "/mnt/d/py/venv/Scripts" ; then
