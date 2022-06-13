@@ -108,6 +108,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export EDITOR='/usr/bin/nvim'
 alias javadebug='java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y'
 
 if ! echo $PATH | grep -q ~/.local/bin; then
