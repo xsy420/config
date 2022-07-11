@@ -63,6 +63,8 @@ sethandler <C-O> a:vim
 sethandler <C-I> a:vim
 sethandler <C-R> a:vim
 
+sethandler <C-F> a:ide
+
 let mapleader = " "
 
 " paste之后不会把yank的内容替换掉
