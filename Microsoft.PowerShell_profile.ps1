@@ -21,3 +21,6 @@ function pipInstall {
 
 Set-Alias -Name lg -Value lazygit
 
+function l {
+  exa -lag --icons
+}
