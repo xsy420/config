@@ -24,3 +24,5 @@ Set-Alias -Name lg -Value lazygit
 function l {
   exa -lag --icons
 }
+
+chcp 936
