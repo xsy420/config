@@ -32,3 +32,7 @@ Invoke-Expression (& {
     (zoxide init --hook $hook powershell) -join "`n"
 })
 
+# 启用 Go Modules 功能
+$env:GO111MODULE="on"
+# 配置 GOPROXY 环境变量
+$env:GOPROXY="https://goproxy.io"
