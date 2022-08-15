@@ -62,7 +62,20 @@ if [[ `/usr/bin/ls -A /mnt ` ]] ; then
 else
   ZSH_THEME="robbyrussell"
   alias docker="sudo docker"
-  alias dockermonitor="sudo docker run -d -p 10001:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer"
+  function dockermonitor () {
+    number=$(sudo docker ps | grep portainer | wc -l)
+    if [[ $number -ge 1 ]] ; then
+      echo "docker's portainer monitor has been started"
+      return
+    fi
+    number=$(sudo docker container ls --all | grep portainer | wc -l)
+    if [[ $number == 0 ]] ; then
+      sudo docker run -d -p 10001:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+    else
+      _id=$(sudo docker container ls --all | grep portainer | awk '{print $1}')
+      sudo docker start ${_id}
+    fi
+  }
   # 如果Linux安装了xorg-xinit,设置开机自启
   if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [ -f /usr/bin/startx ]; then
     conn
@@ -197,7 +210,7 @@ export SCALA_HOME=/opt/scala
 if ! echo $PATH | grep -q $SCALA_HOME ; then
 	export PATH=$PATH:${SCALA_HOME}/bin
 fi
-# export TERM=xterm-color
+export TERM=xterm-256color
 alias sc=scala
 # Maven
 export MAVEN_HOME=/opt/maven
@@ -230,8 +243,12 @@ if [[ -d ${HOME}/.fzf ]] ; then
   source "${HOME}/.fzf/shell/key-bindings.zsh"
 fi
 
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=fcitx5
-export INPUT_METHOD=fcitx5
-export SDL_IM_MODULE=fcitx5
+export GTK_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
+# add to idea.sh `any jetbrains shell`
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+
+export LC_ALL="zh_CN.UTF-8"
+export LC_CTYPE="zh_CN.UTF-8"
