@@ -152,6 +152,7 @@ alias ttyd='ttyd zsh'
 alias mwget='mwget -n20'
 #alias s=screenfetch
 alias s=neofetch
+alias ranger="export TERM=xterm-256color && ranger"
 alias ra=ranger
 alias q='omz reload'
 alias lg='lazygit'
@@ -210,6 +211,7 @@ export SCALA_HOME=/opt/scala
 if ! echo $PATH | grep -q $SCALA_HOME ; then
 	export PATH=$PATH:${SCALA_HOME}/bin
 fi
+alias scala="export TERM=xterm-color && scala"
 export TERM=xterm-256color
 alias sc=scala
 # Maven
