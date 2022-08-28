@@ -1,0 +1,36 @@
+{
+    //默认状态下setting.json文件内容 Begin
+    "editor.fontFamily": "'JetBrainsMono NF'",
+    "editor.fontSize": 20,
+    "editor.fontLigatures": false,
+    //默认状态下setting.json文件内容 End
+    //https://zhuanlan.zhihu.com/p/188499395
+    "editor.fontWeight": "normal",
+    "editor.lineNumbers":"relative",
+    "files.autoGuessEncoding": true,
+
+    //关于vim的配置文件
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+    ],
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "q"],
+            "commands": [":q!"],
+        },
+        {
+            "before": ["<leader>", "w"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.handleKeys": {
+           "<C-a>": false,
+           "<C-f>": false,
+           "<C-n>": false
+   } 
+}
