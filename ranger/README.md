@@ -28,3 +28,11 @@ sudo pacman -S ffmpegthumbnailer
 
 * It will show numbers before files
 
+* Show filetype icons
+
+```shell
+git clone https://github.com/cdump/ranger-devicons2 ~/.config/ranger/plugins/devicons2
+```
+
+Then Add/change default_linemode devicons2 in your ~/.config/ranger/rc.conf
+
