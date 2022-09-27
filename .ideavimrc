@@ -168,6 +168,9 @@ nmap gm <action>(MethodUp)
 let g:WhichKeyDesc_Goto_LastChange = "ga LastChange"
 nmap ga '.
 
+let g:WhichKeyDesc_Goto_GotoImpl = "gi GotoImpl"
+nmap gi <action>(GotoImplementation)
+
 let g:WhichKeyDesc_EasyMotion = "<leader><leader> EasyMotion Prefix"
 
 "let g:WhichKeyDesc_Material = "<leader>m Material"
