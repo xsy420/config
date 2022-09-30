@@ -144,6 +144,9 @@ nmap <leader>c :q!<CR>
 let g:WhichKeyDesc_ToggleExplorer = "<leader>e ToggleExplorer"
 map <leader>e <action>(ActivateProjectToolWindow)
 
+let g:WhichKeyDesc_NoHighLight = "<leader>h NoHighLight"
+map <leader>h :nohls<cr>
+
 " t: Tab⭐️
 let g:WhichKeyDesc_Tab = "t Tab"
 
