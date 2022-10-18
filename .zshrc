@@ -152,7 +152,7 @@ alias pipinstall='python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/sim
 alias ttyd='ttyd zsh'
 alias mwget='mwget -n20'
 #alias s=screenfetch
-alias s=neofetch
+alias s='neofetch | lolcat'
 alias ranger="export TERM=xterm-256color && ranger"
 alias ra=ranger
 alias q='omz reload'
