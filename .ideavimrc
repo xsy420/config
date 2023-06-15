@@ -151,10 +151,10 @@ map <leader>h :nohls<cr>
 let g:WhichKeyDesc_Tab = "t Tab"
 
 let g:WhichKeyDesc_Tab_Next = "tn Next Tab"
-nnoremap tn :tabnext<CR>
+nnoremap tn :tabn<CR>
 
 let g:WhichKeyDesc_Tab_Previous = "tb Previous Tab"
-nnoremap tb :tabprevious<CR>
+nnoremap tb :tabp<CR>
 
 let g:WhichKeyDesc_Goto = "g Goto"
 
